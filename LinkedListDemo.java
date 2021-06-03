@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class LinkedListDemo {
 
 	class Node {
@@ -27,6 +25,18 @@ public class LinkedListDemo {
 		}
 	}
 
+	public void addNodeAtTheBeginning(int data) {
+        System.out.println("Add a node with data " + data + " in the beginning.");
+		Node newNode = new Node(data);
+
+		if (this.head == null) {
+			this.head = newNode;
+		}else {
+			newNode.nextNode = this.head;
+			this.head = newNode;
+		}
+	}
+	
 	public void displayData() {
 		Node current = head;
 		
@@ -41,6 +51,7 @@ public class LinkedListDemo {
         }
         System.out.println();
 	}
+	
 	public static void main(String[] args) {
 		LinkedListDemo list = new LinkedListDemo();
 		list.addNode(56);
@@ -48,6 +59,5 @@ public class LinkedListDemo {
 		list.addNode(70);
 		
 		list.displayData();
-
 	}
 }
