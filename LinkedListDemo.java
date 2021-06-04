@@ -68,7 +68,6 @@ public class LinkedListDemo {
 		}
 
 		while (current != null && current.data != data) {
-
 			previous = current;
 			current = current.nextNode;
 		}
@@ -79,7 +78,26 @@ public class LinkedListDemo {
 		{
 			System.out.println("The data " + data + " could not be found in the List");
 		}
-	}		
+	}	
+
+	public void deleteFromEnd() {  
+		if(head == null) {  
+			System.out.println("List is empty");  
+		}  
+		else {  
+			if(head != tail ) {  
+				Node current = head;  
+				while(current.nextNode != tail) {  
+					current = current.nextNode;  
+				}  
+				tail = current;  
+				tail.nextNode = null;  
+			}  
+			else {  
+				head = tail = null;  
+			}  
+		}  
+	}
 
 	public void displayData() {
 		Node current = head;
@@ -102,8 +120,8 @@ public class LinkedListDemo {
 		list.addNode(30);
 		list.addNode(70);
 		list.displayData();
-		
-	/*	list.addNodeAtTheBeginning(70);
+
+		/*	list.addNodeAtTheBeginning(70);
 		list.addNodeAtTheBeginning(30);
 		list.addNodeAtTheBeginning(56);
 		list.displayData();
@@ -112,8 +130,11 @@ public class LinkedListDemo {
 		list.addNodeAtTheEnd(56);
 		list.addNodeAtTheEnd(30);
 		list.displayData(); */
-		
-		list.deleteFirstElement(56);
+
+		/*	list.deleteFirstElement(56);
+		list.displayData(); */
+
+		list.deleteFromEnd();
 		list.displayData();
 
 
