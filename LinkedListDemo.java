@@ -39,30 +39,6 @@ public class LinkedListDemo {
 		}
 	}
 
-	public void addInMid(int data){  
-		Node newNode = new Node(data);  
-
-		Node temp, current;  
-		//Store the mid position of the list  
-		int count = (size % 2 == 0) ? (size/2) : ((size+1)/2);  
-		//Node temp will point to head  
-		temp = head;  
-		current = null;  
-
-		//Traverse through the list till the middle of the list is reached  
-		for(int i = 0; i < count; i++) {  
-			//Node current will point to temp  
-			current = temp;  
-			//Node temp will point to node next to it.  
-			temp = temp.next;  
-		}  
-
-		//current will point to new node  
-		current.next = newNode;  
-		//new node will point to temp  
-		newNode.next = temp;  
-		size++;  
-	}  
 
 	public void addNodeAtTheEnd(int data) {
 		System.out.println("Add a node with data " + data + " at the end.");
@@ -78,6 +54,32 @@ public class LinkedListDemo {
 			current.nextNode = newNode;
 		}
 	}
+
+	public void deleteFirstElement(int data) {
+		System.out.println("Deleting First element " + data + " from the list");
+		if (this.head == null) {
+			System.out.println("The List is empty.\n");
+		}
+
+		Node current = this.head, previous = this.head;
+
+		if (this.head.data == data) {
+			this.head = this.head.nextNode;
+		}
+
+		while (current != null && current.data != data) {
+
+			previous = current;
+			current = current.nextNode;
+		}
+
+		if (current != null) {
+			previous.nextNode = current.nextNode;
+		} else 
+		{
+			System.out.println("The data " + data + " could not be found in the List");
+		}
+	}		
 
 	public void displayData() {
 		Node current = head;
@@ -96,7 +98,12 @@ public class LinkedListDemo {
 
 	public static void main(String[] args) {
 		LinkedListDemo list = new LinkedListDemo();
-		/*	list.addNodeAtTheBeginning(70);
+		list.addNode(56);
+		list.addNode(30);
+		list.addNode(70);
+		list.displayData();
+		
+	/*	list.addNodeAtTheBeginning(70);
 		list.addNodeAtTheBeginning(30);
 		list.addNodeAtTheBeginning(56);
 		list.displayData();
@@ -105,6 +112,10 @@ public class LinkedListDemo {
 		list.addNodeAtTheEnd(56);
 		list.addNodeAtTheEnd(30);
 		list.displayData(); */
+		
+		list.deleteFirstElement(56);
+		list.displayData();
+
 
 	}
 }
