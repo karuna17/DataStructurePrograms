@@ -99,6 +99,31 @@ public class LinkedListDemo {
 		}  
 	}
 
+	public void sortList() {  
+		//Node current will point to head  
+		Node current = head, index = null;  
+		int temp;  
+
+		if(head == null) {  
+			return;  
+		}  
+		else {  
+			while(current != null) {  
+				index = current.nextNode;  
+
+				while(index != null) {  
+					if(current.data > index.data) {  
+						temp = current.data;  
+						current.data = index.data;  
+						index.data = temp;  
+					}  
+					index = index.nextNode;  
+				}  
+				current = current.nextNode;  
+			}      
+		}  
+	}  
+
 	public void displayData() {
 		Node current = head;
 
@@ -118,7 +143,9 @@ public class LinkedListDemo {
 		LinkedListDemo list = new LinkedListDemo();
 		list.addNode(56);
 		list.addNode(30);
+		list.addNode(40);
 		list.addNode(70);
+		list.addNode(20);
 		list.displayData();
 
 		/*	list.addNodeAtTheBeginning(70);
@@ -134,7 +161,10 @@ public class LinkedListDemo {
 		/*	list.deleteFirstElement(56);
 		list.displayData(); */
 
-		list.deleteFromEnd();
+		/*	list.deleteFromEnd();
+		list.displayData();  */
+		
+		list.sortList();
 		list.displayData();
 
 
