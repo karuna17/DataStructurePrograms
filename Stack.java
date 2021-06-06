@@ -1,67 +1,69 @@
 public class Stack {
-	static final int MAX = 1000;
-	int top;
-	int a[] = new int[MAX]; // Maximum size of Stack
-
-	Stack() {
-		top = -1;
+	Node head;
+	private class Node {	 
+		int data; 
+		Node nextNode; 
 	}
 
-	boolean isEmpty() {
-		return (top < 0);
+	public Stack() {
+		this.head = null;
 	}
 
-	public boolean push(int x) {
-		if (top >= (MAX - 1)) {
+	public void push(int data) {
+		Node newNode = new Node();
+
+		if(newNode == null) {
 			System.out.println("Stack Overflow");
-			return false;
-		}else {
-			a[++top] = x;
-			System.out.println(x + " pushed into stack");
-			return true;
 		}
+		newNode.data = data;
+		newNode.nextNode = head;
+		head = newNode;
+	}
+
+	public boolean isEmpty() {
+		return head == null;		
 	}
 
 	public int pop() {
-		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
-		}else {
-			int x = a[top--];
-			return x;
+		if(head == null) {
+			System.out.println("Stack is underflow");
 		}
+		int data = head.data;
+		head = head.nextNode;
+		return data;
 	}
 
 	public int peek() {
-		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
-		} else {
-			int x = a[top];
-			return x;
+		if(!isEmpty()) {
+			return head.data;
+		}else {
+			System.out.println("stack is empty");
+			return -1;
 		}
 	}
-	public void display ()  
-	{  
-		System.out.println("Printing stack elements .....");  
-		for(int i = top; i>=0;i--)  
-		{  
-			System.out.println(a[i]);  
-		}  
-	}  
+	
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print("\nElements: "+ temp.data);
+            temp = temp.nextNode;
+        }
+
+    }
 
 	public static void main(String[] args) {
 		Stack s = new Stack();
-		s.push(70);
+		s.push(20);
 		s.push(30);
+		s.push(40);
 		s.push(50);
-
-		s.peek();
-		s.display();
-
-		s.pop();
 		s.display();
 		
+		System.out.println("\npeek element: "+ s.peek());
+		
+		System.out.println("After pop");
+		s.pop();
+		s.display();
 	}
 
 }
