@@ -39,7 +39,27 @@ public class LinkedListDemo {
 		}
 	}
 
+	public void addAtMid(int data){  
+		Node newNode = new Node(data);  
+		if(head == null) {  
+			head = newNode;  
+			tail = newNode;  
+		} else {  
+			Node temp, current;  
+			int count = (size % 2 == 0) ? (size/2) : ((size+1)/2);  
+			temp = head;  
+			current = null;  
 
+			for(int i = 0; i < count; i++) {  
+				current = temp;  
+				temp = temp.nextNode;  
+			}  
+			current.nextNode = newNode;  
+			newNode.nextNode = temp;  
+		}  
+		size++;  
+	}  
+	
 	public void addNodeAtTheEnd(int data) {
 		System.out.println("Add a node with data " + data + " at the end.");
 		Node newNode = new Node(data);
@@ -100,7 +120,6 @@ public class LinkedListDemo {
 	}
 
 	public void sortList() {  
-		//Node current will point to head  
 		Node current = head, index = null;  
 		int temp;  
 
@@ -148,22 +167,6 @@ public class LinkedListDemo {
 		list.addNode(20);
 		list.displayData();
 
-		/*	list.addNodeAtTheBeginning(70);
-		list.addNodeAtTheBeginning(30);
-		list.addNodeAtTheBeginning(56);
-		list.displayData();
-
-		list.addNodeAtTheEnd(70);
-		list.addNodeAtTheEnd(56);
-		list.addNodeAtTheEnd(30);
-		list.displayData(); */
-
-		/*	list.deleteFirstElement(56);
-		list.displayData(); */
-
-		/*	list.deleteFromEnd();
-		list.displayData();  */
-		
 		list.sortList();
 		list.displayData();
 
